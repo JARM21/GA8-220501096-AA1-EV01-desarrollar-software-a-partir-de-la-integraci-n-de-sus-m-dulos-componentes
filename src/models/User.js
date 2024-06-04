@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const userSchema = new Schema({
     username: String,
     email: String,
+    telephone: String,
     password: String
 });
 
@@ -15,10 +16,5 @@ userSchema.methods.encryptPassword = async (password) => {
 
 };
 
-//Metodo para validar la contraseña que el usuario ingresa
-userSchema.methods.validatePassword = function (password) {
-    return bcrypt.compare(password, this.password);
-
-}
 
 module.exports = model('User', userSchema);
